@@ -3,7 +3,7 @@ from deep_translator import GoogleTranslator
 
 # Page Setup
 st.set_page_config(page_title="Language Translator", page_icon="🌐")
-st.title("🌐 Language Translation Tool")
+st.title("Language Translation Tool")
 st.markdown("Translate text between any languages instantly!")
 
 # Languages Dictionary
@@ -37,11 +37,11 @@ with col2:
 input_text = st.text_area("Enter text to translate", height=150, placeholder="Type something here...")
 
 # Translate Button
-if st.button("Translate 🔁"):
+if st.button("Translate"):
     if input_text.strip() == "":
-        st.warning("⚠️ Please enter some text first!")
+        st.warning("Please enter some text first!")
     elif source_lang == target_lang:
-        st.warning("⚠️ Source and target languages are same!")
+        st.warning("Source and target languages are same!")
     else:
         with st.spinner("Translating..."):
             try:
@@ -50,14 +50,14 @@ if st.button("Translate 🔁"):
                     target=languages[target_lang]
                 ).translate(input_text)
 
-                st.success("✅ Translation Complete!")
+                st.success("Translation Complete!")
                 st.text_area("Translated Text", value=translated, height=150)
 
                 # Copy Button
                 st.code(translated, language="")
 
             except Exception as e:
-                st.error(f"❌ Error: {str(e)}")
+                st.error(f"Error: {str(e)}")
 
 # Footer
 st.markdown("---")
